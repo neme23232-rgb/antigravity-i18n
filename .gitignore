@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+
+# Build artifacts & temp directories
+temp_build/
+temp_asar/
+temp_test/
+extracted_clean/
+extracted_asar/
+*.unpacked/
+*.backup
+*.log
+
+# Prebuilt patched asar (can be tracked or published in GitHub Releases)
+# app.asar.patched
+
+# Temporary / Scratch analysis scripts
+add_customizations_translations.js
+add_shortcut_categories.js
+append_*.js
+audit_phrases.js
+candidates.json
+clean_ui.js
+clean_ui_strings.json
+click_*.js
+dict.js
+eval_test.js
+extract_*.js
+extracted_candidates.json
+extracted_labels.json
+filter_ui.js
+find_*.js
+fix_es.js
+generate_comprehensive_translations.js
+generate_dicts.js
+get_*.js
+inspect_*.js
+list_buttons.js
+ls.js
+real_ui_missing.json
+ru_dict.js
+search_*.js
+select_language.js
+show_context.js
+test*.js
+test.asar
+test.asar.unpacked
+update_locales.js
+utils.js
+verify_skills.js
+ui_main.js
+build_mod.js
+install_ru.bat
+uninstall_ru.bat
+change_language.bat
+main.js
+menu.js
+preload.js
+check_*.js

@@ -1,0 +1,25 @@
+{
+  "name": "antigravity-i18n",
+  "version": "1.0.0",
+  "description": "Multi-language localization and integrated native language switcher for Google Antigravity 2.0",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "install-mod": "node install.js",
+    "uninstall-mod": "node uninstall.js"
+  },
+  "keywords": [
+    "antigravity",
+    "google-antigravity",
+    "i18n",
+    "localization",
+    "translation",
+    "mod",
+    "electron"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "asar": "^3.2.0"
+  }
+}
