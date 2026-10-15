@@ -24,11 +24,16 @@
     'zh': '语言'
   };
 
-  let currentLang = 'ru';
+  let currentLang = 'en';
   try {
     const saved = localStorage.getItem('ag_user_lang');
     if (saved && (LOCALES[saved] || saved === 'en')) {
       currentLang = saved;
+    } else {
+      const navLang = (navigator.language || '').toLowerCase().slice(0, 2);
+      if (LOCALES[navLang]) {
+        currentLang = navLang;
+      }
     }
   } catch (e) {}
 
@@ -54,7 +59,7 @@
 
     // 1. Exact match (highest priority)
     if (activeDict[trimmed]) {
-      return str.replace(trimmed, activeDict[trimmed]);
+      return str.replace(trimmed, () => activeDict[trimmed]);
     }
 
     // 2. Safe phrase / whole word boundary matches
@@ -65,7 +70,7 @@
       const k = sortedKeys[i];
       if (k.length >= 2 && result.includes(k)) {
         const regex = buildSafeRegex(k);
-        const replaced = result.replace(regex, activeDict[k]);
+        const replaced = result.replace(regex, () => activeDict[k]);
         if (replaced !== result) {
           result = replaced;
           modified = true;
@@ -271,6 +276,8 @@
         }
       } else if (m.type === 'characterData') {
         pendingNodes.add(m.target);
+      } else if (m.type === 'attributes') {
+        pendingNodes.add(m.target);
       }
     }
     if (!scheduled) {
@@ -301,7 +308,9 @@
     observer.observe(document.body, {
       childList: true,
       subtree: true,
-      characterData: true
+      characterData: true,
+      attributes: true,
+      attributeFilter: ['aria-label', 'title', 'placeholder', 'data-tooltip']
     });
   }
 

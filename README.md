@@ -1,111 +1,107 @@
-# Antigravity Multi-Language Localization Mod 🌐
+<div align="center">
+  <img src="icon.png" width="96" height="96" alt="Логотип AGLanguage">
+  <h1>AGLanguage</h1>
+  <p><strong>Полноценный перевод интерфейса и нативный переключатель языков для Google Antigravity 2.0.</strong></p>
+  <p>
+    <img alt="Windows 10/11" src="https://img.shields.io/badge/Windows-10%20%7C%2011-8b5f68">
+    <img alt="Antigravity v2.23.1+" src="https://img.shields.io/badge/Antigravity-v2.23.1%2B-5a6b8c">
+    <img alt="Локализация" src="https://img.shields.io/badge/локализация-7%20языков-8b7355">
+    <img alt="Лицензия MIT" src="https://img.shields.io/badge/лицензия-MIT-7b9b83">
+    <img alt="Телеметрия" src="https://img.shields.io/badge/телеметрия-нет-7b9b83">
+  </p>
+</div>
 
-> Full multi-language localization mod and integrated native language switcher for **Google Antigravity 2.0** desktop application.
+## Что это
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Platform: Windows | macOS | Linux](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-brightgreen.svg)]()
-[![Languages](https://img.shields.io/badge/Languages-EN%20%7C%20UK%20%7C%20RU%20%7C%20DE%20%7C%20FR%20%7C%20ES%20%7C%20ZH-orange.svg)]()
+**AGLanguage** — мод локализации для настольного приложения [Google Antigravity](https://antigravity.google) 2.0. Он переводит элементы интерфейса (боковое меню, диалоги, настройки, пресеты разрешений, экран онбординга, всплывающие подсказки и контекстные меню) на русский, украинский, немецкий, французский, испанский и китайский языки, а также добавляет нативную кнопку переключения языка прямо в боковую панель над настройками.
 
----
+Мод работает полностью локально на вашем компьютере. Он не собирает пользовательские данные, не подключается к сторонним серверам и не изменяет логику взаимодействия агентов.
 
-## ✨ Features
+## Быстрый старт
 
-- **🌐 Pixel-Perfect In-App Language Switcher:** Seamlessly integrated directly above the Settings button in the sidebar, matching the native Radix UI dark theme design.
-- **🔄 Instant Language Switching & Persistence:** Switches language on the fly and saves your preference across app restarts and reloads (stored in `localStorage` and Electron native storage).
-- **🛡️ Comprehensive UI Translation (880+ strings):**
-  - **Sidebar & Menus:** New conversation, history, projects, automations, display options.
-  - **Panels & Tabs:** Terminal, Browser subagent, Changes overview, Files changed, Console, Artifacts.
-  - **Settings & Permissions:** Security profiles (Default, Full machine, Turbo mode, Custom), terminal commands auto-execution, sandbox restrictions, network & file access policies, Model Context Protocol (MCP).
-  - **Keyboard Shortcuts:** Full categories (Recommended, Navigation, Conversation, Layout Controls) and keybinding action descriptions.
-  - **Customizations & Skills:** Marketplace, Installed plugins, Hooks, and full descriptions for all 9 built-in Google Antigravity skills.
-  - **Context Menus & Actions:** Native Electron and DOM context menus (Copy, Edit, Fork, Split view, Archive, Delete).
-- **⚡ Safe Word-Boundary Matching Engine:**
-  - Employs regex word-boundary isolation `(?<!\w)...\b` to prevent broken substring replacements (e.g. avoiding issues like *“Edit-ed”* or *“Model-s”*).
-  - Smart handling of compound sentences with inline elements (links, code badges, dynamic workspace names).
-- **📦 1-Click Installation & Rollback:** Safe automated backup of the original `app.asar` before installation, with single-click restoration anytime.
+Установка мода выполняется в один клик без сложной ручной настройки:
 
----
+1. Скачайте репозиторий или релизный архив.
+2. Закройте Google Antigravity, если приложение запущено.
+3. Запустите файл **`install.bat`** (или выполните команду `node install.js`).
+4. Скрипт автоматически создаст резервную копию оригинального `app.asar.backup` и применит модификацию.
+5. Запустите Google Antigravity — в левой панели над кнопкой «Настройки» появится новая кнопка **Язык / Language / Мова**, где можно выбрать нужный язык интерфейса.
 
-## 🌍 Supported Languages
+> [!TIP]
+> При необходимости всё можно вернуть назад в исходное состояние в один клик: просто запустите **`uninstall.bat`** — он мгновенно восстановит оригинальный немодифицированный файл приложения.
 
-| Code | Language | Native Name | Status |
-| :---: | :---: | :---: | :---: |
-| `en` | English | English | Default (Native) |
-| `uk` | Ukrainian | Українська | ✅ 100% Complete |
-| `ru` | Russian | Русский | ✅ 100% Complete |
-| `de` | German | Deutsch | 🔄 Basic |
-| `fr` | French | Français | 🔄 Basic |
-| `es` | Spanish | Español | 🔄 Basic |
-| `zh` | Chinese | 中文 | 🔄 Basic |
+## Возможности
 
----
+- **Интегрированный переключатель языков** в дизайне Radix UI, гармонично вписанный в интерфейс Antigravity;
+- **Мгновенное переключение на лету** с сохранением выбранного языка между перезапусками приложения (`localStorage` и `nativeStorage`);
+- **Глубокий перевод интерфейса (979+ фраз в RU/UK, 198–218 в DE/FR/ES/ZH)**:
+  - боковая панель, история диалогов, проекты и автоматизации;
+  - экран онбординга, лицензий и привязки Google Cloud проекта (v2.23.1);
+  - пресеты разрешений (Default, Full machine, Turbo mode) и правила согласования терминальных команд;
+  - полноэкранный просмотр медиафайлов, видеоплеер, управление скоростью воспроизведения 2x и вложения архивов (.zip);
+  - разделы документов, скрытие изменений пробелов в diff и временные файлы агента (Scratch Files);
+  - панели субагентов, согласование действий и статусы выполнения задач;
+  - сочетания клавиш, категории горячих клавиш и описания команд;
+  - маркетплейс, каталог установленных плагинов, хуки и встроенные навыки (Skills);
+  - нативные и контекстные меню Electron (копирование, разделение окон, экспорт в PDF, откат диалога);
+- **Безопасный движок сопоставления слов**: изолированные границы слов `(?<!\w)...\b` для исключения повреждения подстрок и защита от искажения спецсимволов (`$`);
+- **Автоматизированное наблюдение (MutationObserver)**: перевод динамически подгружаемых сообщений, атрибутов `aria-label`, `title`, `placeholder` и всплывающих подсказок;
+- **Безопасная установка с защитой от сбоев**: автоматическое создание бэкапа `app.asar.backup` перед внесением любых изменений.
 
-## 🚀 Quick Start / Installation
+## Поддерживаемые языки
 
-### Prerequisites
-- [Google Antigravity](https://antigravity.google) 2.0 installed.
-- [Node.js](https://nodejs.org) (v18 or higher recommended).
+| Код | Язык | Название | Статус | Объем |
+| :---: | :---: | :---: | :---: | :---: |
+| `ru` | Русский | Русский | ✅ Полный | 979 фраз |
+| `uk` | Украинский | Українська | ✅ Полный | 979 фраз |
+| `en` | Английский | English | 🌐 Исходный | Оригинал |
+| `de` | Немецкий | Deutsch | 🔄 Расширенный | 208 фраз |
+| `fr` | Французский | Français | 🔄 Расширенный | 198 фраз |
+| `es` | Испанский | Español | 🔄 Расширенный | 218 фраз |
+| `zh` | Китайский | 中文 | 🔄 Расширенный | 208 фраз |
 
-### Windows
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/antigravity-i18n.git
-   cd antigravity-i18n
-   ```
-2. **Install dependencies and build the mod:**
-   ```bash
-   npm install
-   npm run build
-   ```
-   *(Or simply run `build.bat`)*
-3. **Install into Antigravity:**
-   - Close **Antigravity** if it is currently running.
-   - Run `install.bat` (or `npm run install-mod`).
-4. **Launch Antigravity:**
-   - Click the new **Language / Мова / Язык** button right above Settings in the left sidebar to select your desired language.
+## Как это работает
 
----
+1. **Внедрение в процесс Electron**:
+   Инсталлятор аккуратно инжектирует клиентский скрипт `translator_client.js` в `dist/preload.js` пакета `app.asar`, гарантируя изолированное выполнение в контексте окна приложения.
+2. **Динамический перехват DOM**:
+   Высокопроизводительный `MutationObserver` переводит текстовые узлы и атрибуты подсказок в реальном времени по мере генерации ответов модели и навигации по интерфейсу.
+3. **Локализация системных меню**:
+   Перехватывается метод `electronNative.showContextMenu`, благодаря чему контекстные меню и всплывающие пункты также отображаются на выбранном языке.
 
-## ↩️ Uninstallation (Rollback)
+## Тестирование
 
-To revert Antigravity to its original unmodified state at any time:
-1. Close Antigravity.
-2. Run `uninstall.bat` (or `npm run uninstall-mod`).
+В проект включён собственный набор автоматизированных тестов:
 
-This immediately restores the clean backup (`app.asar.backup`) created during the initial installation.
+```bash
+# Запуск через пакетный файл
+test.bat
 
----
+# Или через npm
+npm test
+```
 
-## 🛠️ How It Works
+Тестовый комплекс проверяет:
+1. **Юнит-тесты движка перевода (`test_pipeline.js`)** — точность совпадений, изоляцию границ слов, безопасность экранирования и фразы актуальных обновлений.
+2. **Тесты целостности словарей (`test_locales.js`)** — валидацию синтаксиса, отсутствие пустых значений и количество фраз по всем поддерживаемым языкам.
+3. **Live UI интеграционный тест (`test_live.js`)** — автоопределение запущенного экземпляра Antigravity через Chrome DevTools Protocol (CDP) и проверку рендеринга переключателя.
 
-1. **Clean Extraction & Injection:**
-   - The build tool packages the client localization script into `dist/preload.js`.
-   - `webFrame.executeJavaScript` executes the isolated localization client in the renderer process.
-2. **Dynamic UI Observation:**
-   - An efficient `MutationObserver` translates DOM text nodes, placeholders, tooltips, and attributes (`aria-label`, `title`) as content dynamically streams in.
-3. **Native Context Menu Interceptor:**
-   - Wraps `window.electronNative.showContextMenu` to localize OS-level context menus before they are passed to the Electron main process.
+## Откат (Удаление мода)
 
----
+Чтобы вернуть Google Antigravity в исходное заводское состояние:
+1. Запустите **`uninstall.bat`** (или `node uninstall.js`).
+2. Скрипт мгновенно восстановит сохранённый файл `app.asar.backup`.
 
-## 🤝 Contributing / Adding a New Language
+## Важно понимать
 
-Contributions are welcome! To add or improve a language:
+- Мод выполняет перевод интерфейса «на лету» на стороне клиента. Он не затрагивает пользовательский код в редакторе, системные логи и ввод в терминале.
+- Перед любой модификацией обязательно создаётся резервная копия оригинального файла `app.asar`.
+- Мод полностью совместим с версиями **Google Antigravity v2.23.1+**. При обновлении приложения от Google достаточно просто повторно запустить `install.bat`.
 
-1. Look in the [`locales/`](locales/) folder (e.g. `locales/de.js`, `locales/es.js`).
-2. Add translation pairs in the format:
-   ```javascript
-   module.exports = {
-     "New Conversation": "Neuer Dialog",
-     "Settings": "Einstellungen",
-     ...
-   };
-   ```
-3. Rebuild with `npm run build` and test.
-4. Submit a Pull Request!
+## Приватность и безопасность
 
----
+Мод не имеет сетевых модулей и работает на 100% локально. Никакие запросы, промпты, токены, файлы и настройки не покидают ваш компьютер.
 
-## 📄 License
+## Лицензия
 
-This project is open-source under the [MIT License](LICENSE).
+Проект распространяется с открытым исходным кодом под лицензией [MIT](LICENSE).

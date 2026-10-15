@@ -42,7 +42,16 @@ ru_dict.js
 search_*.js
 select_language.js
 show_context.js
-test*.js
+test_click.js
+test_live_trans.js
+test_native_btn.js
+test_parsed_skills.js
+test_phrases.js
+test_popup.js
+test_regex.js
+test_safe_regex.js
+test_safe_regex2.js
+test_set_uk.js
 test.asar
 test.asar.unpacked
 update_locales.js
@@ -57,3 +66,5 @@ main.js
 menu.js
 preload.js
 check_*.js
+github real/
+recent_changelog_clean.txt
