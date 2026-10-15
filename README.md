@@ -1,107 +1,110 @@
 <div align="center">
-  <img src="icon.png" width="96" height="96" alt="Логотип AGLanguage">
+  <img src="icon.png" width="96" height="96" alt="AGLanguage Logo">
   <h1>AGLanguage</h1>
-  <p><strong>Полноценный перевод интерфейса и нативный переключатель языков для Google Antigravity 2.0.</strong></p>
+  <p><strong>Seamless multi-language interface translation and native in-app switcher for Google Antigravity 2.0.</strong></p>
   <p>
     <img alt="Windows 10/11" src="https://img.shields.io/badge/Windows-10%20%7C%2011-8b5f68">
     <img alt="Antigravity v2.23.1+" src="https://img.shields.io/badge/Antigravity-v2.23.1%2B-5a6b8c">
-    <img alt="Локализация" src="https://img.shields.io/badge/локализация-7%20языков-8b7355">
-    <img alt="Лицензия MIT" src="https://img.shields.io/badge/лицензия-MIT-7b9b83">
-    <img alt="Телеметрия" src="https://img.shields.io/badge/телеметрия-нет-7b9b83">
+    <img alt="Localization" src="https://img.shields.io/badge/localization-7%20languages-8b7355">
+    <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-7b9b83">
+    <img alt="Telemetry" src="https://img.shields.io/badge/telemetry-none-7b9b83">
+  </p>
+  <p>
+    <strong>English</strong> • <a href="README_ru.md">Русский</a>
   </p>
 </div>
 
-## Что это
+## Overview
 
-**AGLanguage** — мод локализации для настольного приложения [Google Antigravity](https://antigravity.google) 2.0. Он переводит элементы интерфейса (боковое меню, диалоги, настройки, пресеты разрешений, экран онбординга, всплывающие подсказки и контекстные меню) на русский, украинский, немецкий, французский, испанский и китайский языки, а также добавляет нативную кнопку переключения языка прямо в боковую панель над настройками.
+**AGLanguage** is an open-source localization mod and integrated native language switcher for the [Google Antigravity](https://antigravity.google) 2.0 desktop application. It translates the application's interface (sidebar, menus, settings, permissions presets, onboarding screens, tooltips, dialogs, and native context menus) into Russian, Ukrainian, German, French, Spanish, and Chinese, and adds a pixel-perfect language switcher button directly above Settings in the sidebar.
 
-Мод работает полностью локально на вашем компьютере. Он не собирает пользовательские данные, не подключается к сторонним серверам и не изменяет логику взаимодействия агентов.
+All operations execute 100% locally on your machine. The mod does not collect any data, make external network requests, or modify model logic.
 
-## Быстрый старт
+## Quick Start
 
-Установка мода выполняется в один клик без сложной ручной настройки:
+Installation is completely automated and takes just one click:
 
-1. Скачайте репозиторий или релизный архив.
-2. Закройте Google Antigravity, если приложение запущено.
-3. Запустите файл **`install.bat`** (или выполните команду `node install.js`).
-4. Скрипт автоматически создаст резервную копию оригинального `app.asar.backup` и применит модификацию.
-5. Запустите Google Antigravity — в левой панели над кнопкой «Настройки» появится новая кнопка **Язык / Language / Мова**, где можно выбрать нужный язык интерфейса.
+1. Download or clone this repository.
+2. Close Google Antigravity if it is currently running.
+3. Run **`install.bat`** (or execute `node install.js` in your terminal).
+4. The installer automatically backs up your original `app.asar` to `app.asar.backup` and applies the mod.
+5. Launch Google Antigravity — click the new **Language / Мова / Язык** button directly above Settings in the left sidebar to select your preferred language.
 
 > [!TIP]
-> При необходимости всё можно вернуть назад в исходное состояние в один клик: просто запустите **`uninstall.bat`** — он мгновенно восстановит оригинальный немодифицированный файл приложения.
+> You can revert to the clean official version at any time with a single click: simply run **`uninstall.bat`** — it instantly restores your original `app.asar`.
 
-## Возможности
+## Features
 
-- **Интегрированный переключатель языков** в дизайне Radix UI, гармонично вписанный в интерфейс Antigravity;
-- **Мгновенное переключение на лету** с сохранением выбранного языка между перезапусками приложения (`localStorage` и `nativeStorage`);
-- **Глубокий перевод интерфейса (979+ фраз в RU/UK, 198–218 в DE/FR/ES/ZH)**:
-  - боковая панель, история диалогов, проекты и автоматизации;
-  - экран онбординга, лицензий и привязки Google Cloud проекта (v2.23.1);
-  - пресеты разрешений (Default, Full machine, Turbo mode) и правила согласования терминальных команд;
-  - полноэкранный просмотр медиафайлов, видеоплеер, управление скоростью воспроизведения 2x и вложения архивов (.zip);
-  - разделы документов, скрытие изменений пробелов в diff и временные файлы агента (Scratch Files);
-  - панели субагентов, согласование действий и статусы выполнения задач;
-  - сочетания клавиш, категории горячих клавиш и описания команд;
-  - маркетплейс, каталог установленных плагинов, хуки и встроенные навыки (Skills);
-  - нативные и контекстные меню Electron (копирование, разделение окон, экспорт в PDF, откат диалога);
-- **Безопасный движок сопоставления слов**: изолированные границы слов `(?<!\w)...\b` для исключения повреждения подстрок и защита от искажения спецсимволов (`$`);
-- **Автоматизированное наблюдение (MutationObserver)**: перевод динамически подгружаемых сообщений, атрибутов `aria-label`, `title`, `placeholder` и всплывающих подсказок;
-- **Безопасная установка с защитой от сбоев**: автоматическое создание бэкапа `app.asar.backup` перед внесением любых изменений.
+- **Pixel-Perfect Integrated Language Switcher**: Matches Antigravity's native Radix UI dark theme design seamlessly;
+- **Instant Language Switching & State Persistence**: Switches languages on the fly without losing context, saved across reboots and window reloads (`localStorage` & `nativeStorage`);
+- **Comprehensive UI Translation (979+ phrases in RU/UK, 198–218 in DE/FR/ES/ZH)**:
+  - Sidebar navigation, conversation history, projects, and automations;
+  - Onboarding, license selection, and Google Cloud project configuration (v2.23.1);
+  - Permissions preset selector (Default, Full machine, Turbo mode) and terminal approval policies;
+  - Full-screen media viewer, video playback controls, 2x playback speed, and .zip / folder attachments (v2.23.0);
+  - Documents section, whitespace change toggles in diffs, and collapsible Scratch Files;
+  - Subagents panels, approval requests, and live execution status badges;
+  - Keyboard shortcut categories, command descriptions, and hotkey actions;
+  - Customizations marketplace, installed plugins, lifecycle hooks, and built-in skill descriptions;
+  - Native Electron and DOM context menus (Copy, Split view, Export as PDF, Revert conversation);
+- **Safe Word-Boundary Matching Engine**: Employs regex isolation `(?<!\w)...\b` to prevent broken substring replacements and protects against dollar-sign (`$`) replacement corruption;
+- **Dynamic Real-Time Observation (`MutationObserver`)**: Continuously translates dynamically streamed responses, placeholders, `aria-label`, `title`, and tooltip attributes;
+- **Fail-Safe Installation & Rollback**: Automatic verified backups before patching with zero file lock conflicts.
 
-## Поддерживаемые языки
+## Supported Languages
 
-| Код | Язык | Название | Статус | Объем |
+| Code | Language | Native Name | Status | Coverage |
 | :---: | :---: | :---: | :---: | :---: |
-| `ru` | Русский | Русский | ✅ Полный | 979 фраз |
-| `uk` | Украинский | Українська | ✅ Полный | 979 фраз |
-| `en` | Английский | English | 🌐 Исходный | Оригинал |
-| `de` | Немецкий | Deutsch | 🔄 Расширенный | 208 фраз |
-| `fr` | Французский | Français | 🔄 Расширенный | 198 фраз |
-| `es` | Испанский | Español | 🔄 Расширенный | 218 фраз |
-| `zh` | Китайский | 中文 | 🔄 Расширенный | 208 фраз |
+| `ru` | Russian | Русский | ✅ Complete | 979 phrases |
+| `uk` | Ukrainian | Українська | ✅ Complete | 979 phrases |
+| `en` | English | English | 🌐 Native | Default |
+| `de` | German | Deutsch | 🔄 Expanded | 208 phrases |
+| `fr` | French | Français | 🔄 Expanded | 198 phrases |
+| `es` | Spanish | Español | 🔄 Expanded | 218 phrases |
+| `zh` | Chinese | 中文 | 🔄 Expanded | 208 phrases |
 
-## Как это работает
+## How It Works
 
-1. **Внедрение в процесс Electron**:
-   Инсталлятор аккуратно инжектирует клиентский скрипт `translator_client.js` в `dist/preload.js` пакета `app.asar`, гарантируя изолированное выполнение в контексте окна приложения.
-2. **Динамический перехват DOM**:
-   Высокопроизводительный `MutationObserver` переводит текстовые узлы и атрибуты подсказок в реальном времени по мере генерации ответов модели и навигации по интерфейсу.
-3. **Локализация системных меню**:
-   Перехватывается метод `electronNative.showContextMenu`, благодаря чему контекстные меню и всплывающие пункты также отображаются на выбранном языке.
+1. **Clean Runtime Injection**:
+   The installer injects the lightweight client `translator_client.js` into `dist/preload.js` within `app.asar`, ensuring isolated execution inside the window context.
+2. **Dynamic DOM Translation**:
+   An efficient `MutationObserver` translates DOM text nodes and attribute tooltips in real time as the model streams content and views render.
+3. **Native Context Menu Interceptor**:
+   Intercepts `electronNative.showContextMenu` so that OS-level menus and context actions display in your selected language.
 
-## Тестирование
+## Testing
 
-В проект включён собственный набор автоматизированных тестов:
+The project includes an automated test suite:
 
 ```bash
-# Запуск через пакетный файл
+# Run via batch script
 test.bat
 
-# Или через npm
+# Or run via npm
 npm test
 ```
 
-Тестовый комплекс проверяет:
-1. **Юнит-тесты движка перевода (`test_pipeline.js`)** — точность совпадений, изоляцию границ слов, безопасность экранирования и фразы актуальных обновлений.
-2. **Тесты целостности словарей (`test_locales.js`)** — валидацию синтаксиса, отсутствие пустых значений и количество фраз по всем поддерживаемым языкам.
-3. **Live UI интеграционный тест (`test_live.js`)** — автоопределение запущенного экземпляра Antigravity через Chrome DevTools Protocol (CDP) и проверку рендеринга переключателя.
+The test suite validates:
+1. **Translation Engine Unit Tests (`test_pipeline.js`)** — exact matches, regex word-boundary isolation, symbol safety, and latest changelog additions.
+2. **Locale Files Integrity Tests (`test_locales.js`)** — syntax validation, non-empty values, and phrase counts across all 6 language files.
+3. **Live UI Integration Test (`test_live.js`)** — automated detection of running Antigravity instances via Chrome DevTools Protocol (CDP) to verify DOM switcher rendering.
 
-## Откат (Удаление мода)
+## Rollback (Uninstallation)
 
-Чтобы вернуть Google Antigravity в исходное заводское состояние:
-1. Запустите **`uninstall.bat`** (или `node uninstall.js`).
-2. Скрипт мгновенно восстановит сохранённый файл `app.asar.backup`.
+To return Antigravity to its original, unmodified state:
+1. Run **`uninstall.bat`** (or `node uninstall.js`).
+2. The original clean `app.asar.backup` is restored immediately.
 
-## Важно понимать
+## Important Notes
 
-- Мод выполняет перевод интерфейса «на лету» на стороне клиента. Он не затрагивает пользовательский код в редакторе, системные логи и ввод в терминале.
-- Перед любой модификацией обязательно создаётся резервная копия оригинального файла `app.asar`.
-- Мод полностью совместим с версиями **Google Antigravity v2.23.1+**. При обновлении приложения от Google достаточно просто повторно запустить `install.bat`.
+- The mod performs client-side UI translation. It does not alter your project code, compiler logs, or terminal command inputs.
+- A clean backup (`app.asar.backup`) is always preserved before any modification.
+- Fully tested and compatible with **Google Antigravity v2.23.1+**. If Google updates the app, simply re-run `install.bat`.
 
-## Приватность и безопасность
+## Privacy & Security
 
-Мод не имеет сетевых модулей и работает на 100% локально. Никакие запросы, промпты, токены, файлы и настройки не покидают ваш компьютер.
+All translations occur entirely offline on your local machine. No prompts, tokens, source code, or personal data ever leave your computer.
 
-## Лицензия
+## License
 
-Проект распространяется с открытым исходным кодом под лицензией [MIT](LICENSE).
+This project is open-source and released under the [MIT License](LICENSE).
